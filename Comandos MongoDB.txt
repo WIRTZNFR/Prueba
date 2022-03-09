@@ -1,0 +1,171 @@
+help -- ayuda
+db.help() -- elemento.help nos da informcion de ese elemento
+cls --limpiar pantalla
+
+db.version() -- Nos dice la version que estamos usando
+
+db.hostInfo() -- No da la infomacion del equipo, la da en json
+
+show bds
+show databases - -Nos dice las BBDD q hay
+
+use nombrebbdd --- Para crearla y a la vez la activa
+
+
+
+18/02/22  18:00
+coleccion = tabla
+documento=registro
+
+Use usuario
+
+var temp = 
+{
+	_id : 1,
+	nombre : "Luis",
+	likes : ["TEnis", "Futbol"],
+	registered : false,
+	direccion : {
+			calle : "Juan Florez",
+			ciudad: "A Coruña",
+			pais : "España",
+		     }
+};
+
+
+cls
+db.usuarios.insert(temp) ----- insterto el contenido de la variable creada antes
+db.usuarios.insert all
+db.usuarios.find().pretty()    --------- me da un listado de todo lo q he incluido
+
+
+
+Segundo registro
+
+var temp =
+ {
+  _id : 2,
+  nombre : "pepe",
+  likes : ["Tenis", "Futbol", "Natacion"],
+  registered : true, 
+direccion : [{
+	calle : "Juan Florez",
+	ciudad : " A Coruña",
+	pais : "España"
+},
+  	{
+	calle : "A Rua",
+	ciudad : " A Coruña",
+	pais : "España" 
+
+}]
+ };
+db.usuarios.insertOne(temp) 
+db.usuarios.find().pretty()
+
+
+
+
+Tercer usuario
+
+var temp = 
+{
+_id : 3,
+nombre : "Ana",
+likes : ["Tenis", "Futbol", "Natacion", "Remo"],
+registered : true,
+data_alta : "2016-02-02 00:54:12.0",
+direccion : [{
+			calle : "Juan Florez",
+			ciudad : " A Coruña",
+			pais : "España"
+		},
+  	
+			{
+			calle : "A Rua",
+			ciudad : " A Coruña",
+			pais : "España" 
+			},
+	
+			{
+			calle: "Ronda Nelle",
+			ciudad : " A Coruña",
+			pais : "España" 	
+	
+}]
+ };
+
+db.usuarios.insertOne(temp) 
+db.usuarios.find()
+db.usuarios.find().pretty()
+
+
+USUARIO 4
+
+
+
+var temp = 
+{
+_id : 4,
+nombre : "Rosa",
+likes : ["Tenis", "Futbol", "Natacion", "Remo"],
+registered : true,
+data_alta : "210-01-2020",
+descuento : false,
+direccion : [{
+			calle : "Juan Florez",
+			ciudad : " A Coruña",
+			pais : "España"
+		},
+  	
+			{
+			calle : "A Rua",
+			ciudad : " A Coruña",
+			pais : "España" 
+			},
+			
+			{
+			calle: "Ronda Nelle",
+			ciudad : " A Coruña",
+			pais : "España" 	
+	
+		}]
+ };
+
+db.usuarios.insert(temp)
+db.usuarios.insertOne(temp)
+
+
+db.usuarios.find().count()  Los cuenta
+
+
+db.usuarios.find().pretty().limit(2)  Los dos primeros
+
+
+db.usuarios.find({nombre : "pepe"}).pretty() Muestra todos los q se llamen Pepe
+
+
+Proyeccion
+
+db.usuarios.find({nombre : "pepe"}, {nombre : 1}).pretty()
+db.usuarios.find({nombre : "Pepe"}, {nombre : 1}).pretty()
+
+Lo saca con identifdicador
+
+db.usuarios.find({nombre : "pepe"}, {nombre : 1,_id:0}).pretty()
+
+
+VAmoa a borrar el registro Pepe
+db.usuarios.deleteOne( {nombre : "pepe"} )
+db.usuarios.remove( {nombre : "Rosa"} )
+
+
+borramos la coleccion usuarios
+
+db.usuarios.drop()
+
+show collections
+
+Borrar la BBDD
+db.dropdatabase()  -- error por la mayuscula
+db.dropDatabase()
